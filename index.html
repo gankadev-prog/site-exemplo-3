@@ -1,0 +1,1056 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#102b35">
+  <meta name="description" content="Casa do Mar — uma experiência de hospedagem onde o tempo desacelera.">
+  <title>Casa do Mar — Refúgio à Beira-Mar</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #102b35;
+      --navy-light: #1b414b;
+      --sand: #e9dfcf;
+      --cream: #f7f5ef;
+      --white: #fffefa;
+      --muted: #777c78;
+      --gold: #b99a6a;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--navy);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, select {
+      font: inherit;
+    }
+
+    .topbar {
+      height: 38px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--navy);
+      color: #e8e3d8;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    header {
+      position: absolute;
+      z-index: 10;
+      top: 38px;
+      left: 0;
+      width: 100%;
+      padding: 25px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      border-bottom: 1px solid rgba(255,255,255,.2);
+    }
+
+    .logo {
+      font-family: var(--serif);
+      font-size: 27px;
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+
+    .logo span {
+      display: block;
+      margin-top: 6px;
+      font-family: var(--sans);
+      font-size: 8px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      gap: 34px;
+      align-items: center;
+    }
+
+    nav a {
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: opacity .3s;
+    }
+
+    nav a:hover {
+      opacity: .65;
+    }
+
+    .nav-cta {
+      border: 1px solid rgba(255,255,255,.75);
+      padding: 13px 20px;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 0;
+      color: white;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 760px;
+      height: 94vh;
+      max-height: 1000px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      background:
+        linear-gradient(180deg, rgba(7,25,32,.42), rgba(7,25,32,.12) 40%, rgba(7,25,32,.65)),
+        url('https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=2200&q=90') center 55% / cover;
+    }
+
+    .hero-content {
+      width: min(850px, 90%);
+      padding-top: 70px;
+      animation: appear 1.2s ease both;
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(52px, 8vw, 100px);
+      font-weight: 400;
+      line-height: 1.05;
+      margin-bottom: 25px;
+    }
+
+    .hero p {
+      max-width: 480px;
+      margin: 0 auto 38px;
+      font-size: 14px;
+      line-height: 1.9;
+      color: rgba(255,255,255,.9);
+    }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      background: var(--sand);
+      color: var(--navy);
+      padding: 17px 27px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: .3s;
+      border: 1px solid var(--sand);
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: transparent;
+      color: white;
+    }
+
+    .hero-note {
+      position: absolute;
+      bottom: 35px;
+      left: 7%;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.8);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 32px;
+      right: 7%;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      color: rgba(255,255,255,.8);
+    }
+
+    .intro {
+      padding: 125px 8%;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 100px;
+      align-items: center;
+    }
+
+    .section-label {
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .intro h2, .section-heading h2 {
+      font-family: var(--serif);
+      font-size: clamp(37px, 4.4vw, 57px);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .intro-text {
+      color: #727873;
+      font-size: 14px;
+      line-height: 2;
+      max-width: 490px;
+    }
+
+    .intro-text p + p {
+      margin-top: 18px;
+    }
+
+    .text-link {
+      display: inline-block;
+      margin-top: 28px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--gold);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .experience {
+      background: var(--navy);
+      color: white;
+      padding: 105px 7%;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto 60px;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 18px;
+    }
+
+    .section-heading p {
+      color: rgba(255,255,255,.65);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .experience-card {
+      position: relative;
+      min-height: 390px;
+      overflow: hidden;
+    }
+
+    .experience-card img {
+      width: 100%;
+      height: 390px;
+      object-fit: cover;
+      transition: transform .7s;
+    }
+
+    .experience-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .experience-card::after {
+      content: "";
+      position: absolute;
+      inset: 35% 0 0;
+      background: linear-gradient(transparent, rgba(4,19,25,.8));
+    }
+
+    .experience-info {
+      position: absolute;
+      z-index: 1;
+      bottom: 30px;
+      left: 28px;
+    }
+
+    .experience-info small {
+      color: #d7c29f;
+      letter-spacing: 2px;
+      font-size: 9px;
+      text-transform: uppercase;
+    }
+
+    .experience-info h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 29px;
+      margin-top: 9px;
+    }
+
+    .rooms {
+      padding: 120px 8%;
+    }
+
+    .rooms-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 55px;
+      gap: 30px;
+    }
+
+    .rooms-top h2 {
+      font-family: var(--serif);
+      font-size: clamp(38px, 5vw, 60px);
+      font-weight: 400;
+      max-width: 520px;
+    }
+
+    .rooms-top p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+      max-width: 300px;
+    }
+
+    .room-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .room-image {
+      height: 520px;
+      overflow: hidden;
+    }
+
+    .room-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .room-details {
+      padding: 20px 0;
+    }
+
+    .room-details h3 {
+      font-family: var(--serif);
+      font-size: 38px;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .room-details p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 2;
+      margin-bottom: 24px;
+    }
+
+    .room-features {
+      border-top: 1px solid #dedbd2;
+      border-bottom: 1px solid #dedbd2;
+      padding: 20px 0;
+      margin-bottom: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px 25px;
+      color: #68716d;
+      font-size: 11px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 9px;
+      height: 340px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .quote-section {
+      text-align: center;
+      padding: 125px 8%;
+      background: var(--sand);
+    }
+
+    .quote-section .quote-mark {
+      font-family: var(--serif);
+      font-size: 65px;
+      line-height: .7;
+      color: var(--gold);
+    }
+
+    .quote-section blockquote {
+      max-width: 800px;
+      margin: 25px auto;
+      font-family: var(--serif);
+      font-size: clamp(27px, 4vw, 43px);
+      line-height: 1.45;
+      font-weight: 400;
+    }
+
+    .quote-section p {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #77746b;
+    }
+
+    .booking {
+      padding: 110px 8%;
+      background: var(--navy);
+      color: white;
+    }
+
+    .booking-wrap {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .booking-copy h2 {
+      font-family: var(--serif);
+      font-size: clamp(40px, 5vw, 60px);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .booking-copy p {
+      color: rgba(255,255,255,.65);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .booking-form {
+      background: #fffefa;
+      color: var(--navy);
+      padding: 38px;
+    }
+
+    .booking-form h3 {
+      font-family: var(--serif);
+      font-size: 27px;
+      font-weight: 400;
+      margin-bottom: 25px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #747c78;
+    }
+
+    .field input, .field select {
+      width: 100%;
+      padding: 13px 10px;
+      border: 0;
+      border-bottom: 1px solid #d9d9d1;
+      background: transparent;
+      color: var(--navy);
+      outline: none;
+      font-size: 12px;
+    }
+
+    .booking-form .button {
+      width: 100%;
+      margin-top: 28px;
+      background: var(--navy);
+      color: white;
+      border-color: var(--navy);
+    }
+
+    .booking-form .button:hover {
+      background: var(--navy-light);
+    }
+
+    .form-note {
+      margin-top: 15px;
+      font-size: 10px;
+      line-height: 1.6;
+      color: #858982;
+    }
+
+    footer {
+      background: #0a2028;
+      color: white;
+      padding: 65px 8% 25px;
+    }
+
+    .footer-main {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      padding-bottom: 50px;
+    }
+
+    .footer-brand p {
+      color: rgba(255,255,255,.55);
+      font-size: 12px;
+      line-height: 1.8;
+      max-width: 260px;
+      margin-top: 20px;
+    }
+
+    .footer-column h4 {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      color: #c7ae85;
+    }
+
+    .footer-column a, .footer-column p {
+      display: block;
+      font-size: 12px;
+      color: rgba(255,255,255,.65);
+      margin-bottom: 13px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.12);
+      padding-top: 23px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 10px;
+      color: rgba(255,255,255,.4);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity .8s, transform .8s;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 800px) {
+      header {
+        padding: 20px 6%;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 25px 7%;
+        background: var(--navy);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      .hero {
+        min-height: 680px;
+        height: 90vh;
+      }
+
+      .intro {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 85px 7%;
+      }
+
+      .experience {
+        padding: 85px 7%;
+      }
+
+      .experience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-card, .experience-card img {
+        height: 360px;
+        min-height: 360px;
+      }
+
+      .rooms {
+        padding: 85px 7%;
+      }
+
+      .rooms-top {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .room-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .room-image {
+        height: 390px;
+      }
+
+      .gallery {
+        height: 220px;
+      }
+
+      .booking {
+        padding: 85px 7%;
+      }
+
+      .booking-wrap {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .booking-form {
+        padding: 25px;
+      }
+
+      .footer-main {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .topbar {
+        font-size: 8px;
+        letter-spacing: 1px;
+      }
+
+      .hero h1 {
+        font-size: 53px;
+      }
+
+      .hero-note {
+        left: 6%;
+        font-size: 8px;
+      }
+
+      .scroll-indicator {
+        right: 6%;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+        height: 180px;
+      }
+
+      .gallery img:last-child {
+        display: none;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      .footer-main {
+        flex-direction: column;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    Um refúgio para desacelerar e sentir o essencial
+  </div>
+
+  <header>
+    <a href="#" class="logo">
+      Casa do Mar
+      <span>Hotel Boutique</span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+
+    <nav id="navigation">
+      <a href="#sobre">O refúgio</a>
+      <a href="#experiencias">Experiências</a>
+      <a href="#acomodacoes">Acomodações</a>
+      <a href="#contato" class="nav-cta">Reservar estadia ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">Entre o azul do mar e a tranquilidade</div>
+        <h1>O tempo<br>pode esperar.</h1>
+        <p>
+          Um lugar especial para respirar fundo, descobrir novos horizontes
+          e viver momentos que merecem ser lembrados.
+        </p>
+        <a href="#contato" class="button">Descubra sua estadia <span>↗</span></a>
+      </div>
+
+      <div class="hero-note">Hospitalidade com alma e natureza</div>
+      <div class="scroll-indicator">Explore a Casa do Mar ↓</div>
+    </section>
+
+    <section class="intro" id="sobre">
+      <div class="reveal">
+        <div class="section-label">01 — Nossa essência</div>
+        <h2>Mais do que uma hospedagem. Um jeito de sentir a vida.</h2>
+      </div>
+
+      <div class="intro-text reveal">
+        <p>
+          Imagine acordar com a brisa do oceano, aproveitar um café sem
+          pressa e terminar o dia contemplando o horizonte.
+        </p>
+        <p>
+          Na Casa do Mar, cada detalhe foi pensado para criar uma experiência
+          de acolhimento, conforto e conexão com a natureza.
+        </p>
+        <a href="#experiencias" class="text-link">Conheça nossas experiências ↗</a>
+      </div>
+    </section>
+
+    <section class="experience" id="experiencias">
+      <div class="section-heading reveal">
+        <div class="section-label">02 — Viva o momento</div>
+        <h2>Pequenos momentos. Grandes memórias.</h2>
+        <p>
+          Aproveite cada instante em um ambiente onde a simplicidade
+          encontra o conforto e a beleza natural.
+        </p>
+      </div>
+
+      <div class="experience-grid">
+        <article class="experience-card reveal">
+          <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=900&q=85" alt="Piscina de hotel cercada pela natureza">
+          <div class="experience-info">
+            <small>01 — Relaxamento</small>
+            <h3>Tempo para você</h3>
+          </div>
+        </article>
+
+        <article class="experience-card reveal">
+          <img src="https://images.unsplash.com/photo-1515003197210-e0cd7184f8b5?auto=format&fit=crop&w=900&q=85" alt="Experiência gastronômica">
+          <div class="experience-info">
+            <small>02 — Gastronomia</small>
+            <h3>Sabores e encontros</h3>
+          </div>
+        </article>
+
+        <article class="experience-card reveal">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85" alt="Praia tropical de águas tranquilas">
+          <div class="experience-info">
+            <small>03 — Natureza</small>
+            <h3>O mar por perto</h3>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="rooms" id="acomodacoes">
+      <div class="rooms-top reveal">
+        <div>
+          <div class="section-label">03 — Seu espaço</div>
+          <h2>Conforto que acolhe. Design que inspira.</h2>
+        </div>
+        <p>
+          Ambientes pensados para proporcionar tranquilidade,
+          privacidade e uma experiência de descanso completa.
+        </p>
+      </div>
+
+      <div class="room-grid">
+        <div class="room-image reveal">
+          <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=90" alt="Quarto de hotel boutique com decoração natural">
+        </div>
+
+        <div class="room-details reveal">
+          <div class="section-label">Acomodação em destaque</div>
+          <h3>Suíte Horizonte</h3>
+          <p>
+            Um ambiente acolhedor com materiais naturais, iluminação suave
+            e detalhes cuidadosamente selecionados para tornar sua estadia
+            ainda mais especial.
+          </p>
+
+          <div class="room-features">
+            <span>✓ Cama confortável</span>
+            <span>✓ Ambiente climatizado</span>
+            <span>✓ Banheiro privativo</span>
+            <span>✓ Wi-Fi</span>
+          </div>
+
+          <a href="#contato" class="text-link">Consultar disponibilidade ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery">
+      <img src="https://images.unsplash.com/photo-1602002418082-a4443e081dd1?auto=format&fit=crop&w=900&q=85" alt="Área de descanso de hotel">
+      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85" alt="Arquitetura contemporânea">
+      <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=900&q=85" alt="Piscina em ambiente tropical">
+    </section>
+
+    <section class="quote-section">
+      <div class="quote-mark">“</div>
+      <blockquote>
+        Existem lugares que visitamos. E existem lugares que continuam
+        vivendo dentro de nós.
+      </blockquote>
+      <p>Casa do Mar — Uma experiência para guardar</p>
+    </section>
+
+    <section class="booking" id="contato">
+      <div class="booking-wrap">
+        <div class="booking-copy reveal">
+          <div class="section-label">04 — Sua próxima viagem</div>
+          <h2>Seu momento de descanso começa aqui.</h2>
+          <p>
+            Planeje sua próxima experiência à beira-mar.
+            Envie uma solicitação e imagine os dias especiais que esperam por você.
+          </p>
+        </div>
+
+        <form class="booking-form reveal" id="bookingForm">
+          <h3>Planeje sua estadia</h3>
+
+          <div class="form-grid">
+            <div class="field full">
+              <label for="name">Seu nome</label>
+              <input id="name" type="text" placeholder="Como podemos chamar você?" required>
+            </div>
+
+            <div class="field">
+              <label for="arrival">Check-in</label>
+              <input id="arrival" type="date" required>
+            </div>
+
+            <div class="field">
+              <label for="departure">Check-out</label>
+              <input id="departure" type="date" required>
+            </div>
+
+            <div class="field full">
+              <label for="guests">Número de hóspedes</label>
+              <select id="guests" required>
+                <option value="">Selecione</option>
+                <option>1 hóspede</option>
+                <option>2 hóspedes</option>
+                <option>3 hóspedes</option>
+                <option>4 hóspedes</option>
+                <option>5 ou mais hóspedes</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="button" type="submit">Solicitar disponibilidade ↗</button>
+          <p class="form-note">
+            Projeto demonstrativo. Este formulário não realiza reservas reais.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          Casa do Mar
+          <span>Hotel Boutique</span>
+        </a>
+        <p>
+          Um refúgio imaginado para quem deseja desacelerar,
+          respirar e aproveitar o melhor da vida.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Explore</h4>
+        <a href="#sobre">Nossa essência</a>
+        <a href="#experiencias">Experiências</a>
+        <a href="#acomodacoes">Acomodações</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Reservas</h4>
+        <a href="#contato">Solicitar estadia</a>
+        <a href="#contato">Disponibilidade</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Localização</h4>
+        <p>Um refúgio à beira-mar</p>
+        <p>Projeto conceitual</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Casa do Mar. Projeto demonstrativo.</span>
+      <span>Design conceitual por NXbytes Digital.</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navigation = document.getElementById('navigation');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navigation.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      menuToggle.textContent = isOpen ? '×' : '☰';
+    });
+
+    document.querySelectorAll('#navigation a').forEach(link => {
+      link.addEventListener('click', () => {
+        navigation.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.textContent = '☰';
+      });
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(element => {
+      observer.observe(element);
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const arrival = document.getElementById('arrival');
+    const departure = document.getElementById('departure');
+
+    const today = new Date();
+    const todayString = [
+      today.getFullYear(),
+      String(today.getMonth() + 1).padStart(2, '0'),
+      String(today.getDate()).padStart(2, '0')
+    ].join('-');
+
+    arrival.min = todayString;
+    departure.min = todayString;
+
+    arrival.addEventListener('change', () => {
+      departure.min = arrival.value || todayString;
+
+      if (departure.value && departure.value <= arrival.value) {
+        departure.value = '';
+      }
+    });
+
+    document.getElementById('bookingForm').addEventListener('submit', event => {
+      event.preventDefault();
+
+      if (departure.value <= arrival.value) {
+        alert('A data de check-out deve ser posterior à data de check-in.');
+        return;
+      }
+
+      alert('Esta é uma demonstração do formulário. As reservas reais ainda não estão habilitadas.');
+    });
+  </script>
+
+</body>
+</html>
